@@ -1,0 +1,9 @@
+.idea
+node_modules
+dist
+dist/*
+*/.DS_Store
+.DS_Store
+npm-debug.log
+*.swp
+/local.json

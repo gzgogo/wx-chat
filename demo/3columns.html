@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width"/>
+    <title>3列满屏布局</title>
+    <style>
+        div.left, div.main, div.right {
+            float: left;
+        }
+        .wrapper .main {
+            width: 100%;
+            background-color: #00f;
+        }
+        .wrapper .left {
+            width: 50px;
+            margin-left: -100%;
+            background-color: #0f0;
+        }
+        .wrapper .right {
+            width: 60px;
+            margin-left: -60px;
+            background-color: #f00;
+        }
+        .wrapper .main .content {
+            margin-left: 50px;
+            margin-right: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="main">
+        <div class="content">center</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+</div>
+</body>
+</html>

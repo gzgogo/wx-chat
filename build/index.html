@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <title>选择好友</title>
+<body>
+<div class="root" @load="pageLoad">
+    <div class="wrapper">
+        <div class="contentWrapper">
+            <header>
+                <h4>选择好友</h4>
+                <div class="hint">提醒：第一个选择的是用户自己，之后选择的是与其聊天的好友</div>
+            </header>
+            <div>
+                <ul class="userList">
+                    <li v-bind:class="{ 'me': user.isAuthor, 'selected': user.isSelected }" @click="chooseUser($index)" v-for="user in users">
+                        <img :src="user.faceUrl"  alt="用户头像">
+                        <br/>
+                        <span>{{ user.name }}</span>
+                    </li>
+                    <a class="btnShowAdd" v-on:click="showAddDialog"><img src="images/avatars/adduser.png" alt="添加用户"></a>
+                </ul>
+                <button id="btnReset" v-on:click="resetUsers">重新选择</button>
+            </div>
+        </div>
+        <div class="footer">
+            <button class="btn btn-primary" id="btnStartChat" v-on:click="startChat" :disabled="selectedUsers.length<=0">开始聊天</button>
+        </div>
+        <div class="dialog" v-if="isShowing" transition="fade">
+            <table>
+                <!--<caption>添加联系人</caption>-->
+                <tr>
+                    <td>
+                        <label for="userFace">头像</label>
+                    </td>
+                    <td>
+                        <a href="javascript:;" class="file">
+                            选择图片
+                            <input type="file" id="userFace" accept="image/jpeg,image/png" required @change="selectPhoto"/>
+                        </a>
+                        <img class="selectedPhoto" :src="newUserAvatar" alt=""/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="userName">名称</label>
+                    </td>
+                    <td>
+                        <input type="text" id="userName" placeholder="名称" v-model="newUserName" required/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button id="btnAddUser" @click="addUser">添加</button>
+                        <button id="btnCancel" @click="cancelAdd">取消</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/min/vue.min.js"></script>
+<script src="js/min/hammer.min.js"></script>
+<script src="js/min/vue-touch.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

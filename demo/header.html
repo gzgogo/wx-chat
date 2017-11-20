@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title></title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <style>
+        .chatHeader {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            z-index: 999;
+            width: 100%;
+            max-width: 640px;
+            background-color: #22292c;
+            color: white;
+            height: 50px;
+            line-height: 50px;
+        }
+        .chatHeader div.main {
+            width: 100%;
+            float: left;
+        }
+        .chatHeader div.left, .chatHeader div.right {
+            float: left;
+        }
+        .chatHeader div.left {
+            width: 50px;
+            margin-left: -100%;
+        }
+        .chatHeader div.right {
+            width: 50px;
+            margin-left: -50px;
+            text-align: center;
+        }
+        .chatHeader .main div.content {
+            margin: 0 50px;
+            text-align: center;
+        }
+        .chatHeader .left .back {
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .chatHeader .right img {
+            margin-top: 14px;
+            margin-right: 0px;
+            width: 22px;
+            height: 22px;
+        }
+    </style>
+</head>
+<body>
+<div class="chatHeader">
+    <div class="main">
+        <div class="content">
+            <span class="chatUser">{{title}}</span>
+        </div>
+    </div>
+    <div class="left">
+        <div class="back">
+            <span>&lt;微信</span>
+        </div>
+    </div>
+    <div class="right">
+        <img src="images/contact.png" alt="contact"/>
+    </div>
+</div>
+</body>
+</html>

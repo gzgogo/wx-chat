@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <style>
+        div.root{
+            width: 480px;
+            background-color: blue;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="root">490px</div>
+<div class="root">490px</div>
+<p>devicePixelRatio</p>
+<div id="content1"></div>
+<p>innerWidth,innerHeight</p>
+<div id="content2"></div>
+<p>clientWidth,clientHeight</p>
+<div id="content3"></div>
+<script>
+    $("#content1").html(window.devicePixelRatio.toString());
+    $("#content2").html(window.innerWidth.toString() + "," + window.innerHeight.toString());
+    $("#content3").html(document.documentElement.clientWidth.toString() + "," + document.documentElement.clientHeight.toString());
+</script>
+</body>
+</html>

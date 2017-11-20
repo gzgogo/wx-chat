@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>聊天</title>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="weixin,微信,聊天">
+    <meta name="description" content="模仿微信聊天">
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/chat.css"/>
+</head>
+<body>
+<div class="root">
+    <div class="dialog" v-if="choosing" transition="fade">
+        <p class="dialogTitle">选择发言人，点击发送</p>
+        <div>
+            <ul class="friendList">
+                <li v-bind:class="{ 'me': user.isAuthor }" @click="sendMsg($index)" v-for="user in users">
+                    <img :src="user.faceUrl"  alt="用户头像"><br/>
+                    <span>{{ user.name }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrapper" v-touch:tap="hideDialog">
+        <header class="chatHeader">
+            <div class="main">
+                <div class="content">
+                    {{ title }}
+                </div>
+            </div>
+            <div class="left">
+                <div class="back">
+                    <img src="images/return.png" alt="return"/>
+                    <span>微信</span>
+                </div>
+            </div>
+            <div class="right">
+                <img :src="contactImage" alt="contact"/>
+            </div>
+        </header>
+        <div class="chatWrapper">
+            <ul id="chat" >
+                <li v-for="msg in messages" class="{{msg.user.isAuthor ? 'author' : ''}}">
+                    <div class="userFace"><img :src="msg.user.faceUrl" alt=""></div>
+                    <div class="userSay">
+                        <div class="inlineText">
+                            {{msg.content}}
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <footer class="pageFooter">
+            <div class="main">
+                <div class="content">
+                    <input type="text" id="inputMsg" name="inputMsg" v-model="newMsg"/>
+                </div>
+            </div>
+            <div class="left">
+                <a href="javescript:;" class="imageBtn" id="btnSwitch"><img src="images/keyboard.png" alt="switch"/></a>
+            </div>
+            <div class="right">
+                <div class="more" v-if="!newMsg">
+                    <a href="javescript:;" class="imageBtn" id="btnEmoji"><img src="images/emoji.png" alt="switch"/></a>
+                    <a href="javescript:;" class="imageBtn" id="btnMore"><img src="images/more.png" alt="switch"/></a>
+                </div>
+                <!--<a href="javascript:void(0)" class="circleBtn" id="btnMore"><span class="glyphicon glyphicon-plus"></span></a>-->
+                <button class="btn btn-primary" v-if="newMsg" transition="btnSenFade" id="btnSend" @click="chooseUser" :disabled="textMsg.length<=0">发送</button>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="js/min/vue.min.js"></script>
+<script src="js/min/hammer.min.js"></script>
+<script src="js/min/vue-touch.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>

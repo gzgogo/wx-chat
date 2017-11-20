@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title></title>
+    <link rel="stylesheet" href="css/common.css"/>
+    <style>
+
+        .pageFooter {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 40px;
+            color: #d5d5d5;
+            background-color: white;
+            border: 1px solid #d5d5d5;
+            border-width: 1px 0px 1px 0px;
+        }
+        .pageFooter div.main
+        {
+            width: 100%;
+            float: left;
+            text-align: center;
+        }
+        .pageFooter div.left, .pageFooter div.right
+        {
+            float: left;
+            text-align: center;
+        }
+        .pageFooter div.left
+        {
+            width: 40px;
+            margin-left: -100%;
+        }
+        .pageFooter div.right
+        {
+            width: 50px;
+            margin-left: -50px;
+            text-align: center;
+        }
+        .pageFooter .main div.content {
+            margin: 0 60px 0px 45px;
+            text-align: left;
+        }
+        .pageFooter .main input {
+            width: 90%;
+            margin-left: 6px;
+        }
+        .pageFooter .circleBtn {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            border: 1px solid #777;
+            display: inline-block;
+            margin-top: 6px;
+            color: #000;
+         }
+        .pageFooter .main div.content {
+            margin-top: 5px;
+            height: 25px;
+            border: 0px solid #46bf18;
+            border-width:0px 0px 1px 0px;
+        }
+        .pageFooter input[type="text"], .chatFooter input[type="text"]:focus {
+            border-width: 0px;
+            outline: none;
+            color: black;
+            font-size: 18px;
+        }
+        .pageFooter .right #btnSend {
+            font-size: 12px;
+            width: 44px;
+            height: 28px;
+            padding: 0px;
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="pageFooter">
+    <div class="main">
+        <div class="content">
+            <input type="text" id="inputMsg" name="inputMsg" v-model="textMsg"/>
+        </div>
+    </div>
+    <div class="left">
+        <a href="javescript:void(0)" class="circleBtn" id="btnSwitch">=</a>
+    </div>
+    <div class="right">
+        <!--<a href="javascript:void(0)" class="circleBtn" id="btnMore"><span class="glyphicon glyphicon-plus"></span></a>-->
+        <button class="btn btn-primary" id="btnSend" v-on:click="chooseUser" :disabled="textMsg.length<=0">发送</button>
+    </div>
+</div>
+</body>
+</html>
